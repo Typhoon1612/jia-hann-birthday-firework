@@ -4,8 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firework</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+    <div>
+        <h1>
+            <span style="text-decoration-line: underline;">生日快樂</span><br/>
+            <div id="wish">
+                <span id="wish-you">祝你:</span>
+                <br/>
+                <div id="wish-quote">
+                    <span class="wishes">百事可乐</span>
+                    <br/>
+                    <span class="wishes">万事芬达</span>
+                    <br/>
+                    <span class="wishes">心情雪碧</span>
+                    <br/>
+                    <span class="wishes">一周七喜</span>
+                </div>
+            </div>  
+        </h1>
+    </div>
+    <audio autoplay loop>
+        <source src="birthday-song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div id="by-me">
+        <p>by: Wing Kian</p>
+    </div>
     <canvas id="Canvas"></canvas>
     <script src="app.js"></script>
 </body>
