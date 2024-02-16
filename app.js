@@ -1,21 +1,20 @@
 // Get the canvas element with the id "Canvas"
 var c = document.getElementById("Canvas");
-
 // Get the 2D rendering context for the canvas
-var ctx = c.getContext("2d");
+var ctx = c.getContext("2d")
 
 // Initialize variables for canvas width, canvas height, arrays to store shells and passes, and an array of colors
 var cwidth, cheight;
 var shells = [];
 var pass = [];
+
 var colors = ['#ff5252','#ff4081','#e040fb','#7c4dff','#53dff','#40cdff','#18ffff','#64ffda','#69f0ae','b2fff59']
 
 // Trigger the reset function on window resize
-window.onresize = function() { reset(); }
+window.onresize = function() { reset();}
 
 // Initialize the canvas dimensions
 reset();
-
 // Reset function to set canvas dimensions based on window size
 function reset(){
     cwidth = window.innerWidth;
@@ -29,7 +28,7 @@ function newShell(){
     // Randomly determine if the shell should be on the left side
     var left = (Math.random() > 0.5);
     var shell = {};
-    shell.x = (1 * left);
+    shell.x = (1*left);
     shell.y = 1;
     shell.xoff = (0.01 + Math.random() * 0.007) * (left ? 1: -1);
     shell.yoff = 0.01 + Math.random() * 0.007;
@@ -46,7 +45,22 @@ function newPass(shell) {
 
     for (i = 0; i < pasCount; i++){
 
-        // ... (code omitted for brevity)
+        var pas = {};
+        pas.x = shell.x * cwidth;
+        pas.y = shell.y * cheight;
+
+        var a = Math.random() * 4;
+        var s = Math.random() * 10;
+
+        pas.xoff = s * Math.sin((5 - a) * (Math.PI / 2));
+        pas.yoff = s * Math.sin(a * (Math.PI / 2));
+
+        pas.color = shell.color;
+        pas.size = Math.sqrt(shell.size); 
+
+        if ( pass.length < 1000 ){
+            pass.push(pas);
+        }
     }
 }
 
@@ -115,7 +129,7 @@ function Run() {
             pass.splice(ix, 1);
         }
     }
-
     // Request the next animation frame
     requestAnimationFrame(Run);
 }
+
